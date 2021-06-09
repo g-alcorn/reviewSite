@@ -9,7 +9,7 @@ export default class RestaurantsDAO {
     } try {
       restaurants = await conn.db(process.env.RESTREVIEWS_NS).collection("restaurants");
     } catch (e) {
-      console.error(`Unable to oestablish collection handle in restaurantsDAO: ${e}`);
+      console.error(`Unable to establish collection handle in restaurantsDAO: ${e}`);
     }
   };
 
@@ -43,7 +43,7 @@ export default class RestaurantsDAO {
     try {
       cursor = await restaurants.find(query);
     } catch (e) {
-      console.error(`Unable to issue find command ${e}`);
+      console.error(`Unable to issue find command: ${e}`);
       return { restaurantsList: [], totalNumRestaurants: 0 };
     }
 
@@ -57,9 +57,9 @@ export default class RestaurantsDAO {
 
       return {restaurantsList, totalNumRestaurants};
     } catch (e) {
-      console.error(`Unable to convert cursor to array, or problem counting documents ${e}`);
+      console.error(`Unable to convert cursor to array, or problem counting documents: ${e}`);
       
       return { restaurantsList: [], totalNumRestaurants: 0 };
     }
-  }
+  };
 }
