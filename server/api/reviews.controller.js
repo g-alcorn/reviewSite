@@ -48,6 +48,8 @@ export default class ReviewsController {
         throw new Error(
           "Unable to update review"
         );
+      } else if (reviewResponse.modifiedCount === 1) {
+        res.json({ status: "success - modified 1 review" });
       }
     } catch (e) {
       res
@@ -65,10 +67,11 @@ export default class ReviewsController {
         userId
       );
       
-      //Test later
-      // if (reviewReponse) {
-      //   res.json({ status: "success" });
-      // }
+      if( reviewResponse.deletedCount === 0) {
+        res.json({ status: "error - failed to delete 1 review" });
+      } else if (reviewResponse.deletedCount === 1) {
+        res.json({ status: "success - deleted 1 review" });
+      }
     } catch (e) {
       res
         .status(500)
