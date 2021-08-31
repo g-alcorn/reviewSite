@@ -36,7 +36,6 @@ const RestaurantsList = props => {
     RestaurantDataService
       .getAll()
       .then(response => {
-        console.log('All restaurants retrieved');
         setRestaurants(response.data.restaurants);
       })
       .catch(e => {
@@ -48,7 +47,6 @@ const RestaurantsList = props => {
     RestaurantDataService
       .getCuisines()
       .then(response => {
-        console.log('Cuisines retrieved');
         setCuisines(["All cuisines"].concat(response.data));
       })
       .catch(e => {
@@ -64,7 +62,6 @@ const RestaurantsList = props => {
     RestaurantDataService
       .find(query, by)
       .then(response => {
-        console.log(`Find success: ${response.data}`);
         setRestaurants(response.data.restaurants);
       })
       .catch(e => {
@@ -88,6 +85,20 @@ const RestaurantsList = props => {
     find(searchZip, "zipcode");
   };
 
+  const handleEnterPress = (event) => {
+    if(event.key === "Enter") {
+      switch(event.nativeEvent.target.attributes[2].nodeValue) {
+        case "Search by name":
+          findByName();
+          break;
+
+        case "Search by ZIP":
+          findByZip();
+          break;
+      };
+    }
+  };
+
   return (
     <div id="restaurantsList">
       <div className="row pb-1">
@@ -98,12 +109,32 @@ const RestaurantsList = props => {
             placeholder="Search by name"
             value={searchName}
             onChange={onChangeSearchName}
+            onKeyPress={handleEnterPress}
           />
           <div className="input-group-append">
             <button
               className="btn btn-outline-secondary"
               type="button"
               onClick={findByName}
+            >
+              Search
+            </button>
+          </div>
+        </div>
+        <div className="input-group col-lg-4">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search by ZIP"
+            value={searchZip}
+            onChange={onChangeSearchZip}
+            onKeyPress={handleEnterPress}
+          />
+          <div className="input-group-append">
+            <button
+              className="btn btn-outline-secondary"
+              type="button"
+              onClick={findByZip}
             >
               Search
             </button>
@@ -130,6 +161,7 @@ const RestaurantsList = props => {
           </div>
         </div>
       </div>
+
       <div className="row">
         {restaurants.map((restaurant) => {
           const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
