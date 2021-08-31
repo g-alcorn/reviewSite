@@ -133,6 +133,7 @@ const RestaurantsList = props => {
       <div className="row">
         {restaurants.map((restaurant) => {
           const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
+          const addressSearch = `${restaurant.address.building}\+${restaurant.address.street}\+${restaurant.address.zipcode}`;
           return (
             <div className="col-lg-4 pb-1">
               <div className="card">
@@ -151,7 +152,7 @@ const RestaurantsList = props => {
                     </Link>
                     <a 
                       target="a_blank" 
-                      href={"https://www.google.com/maps/places/\""+address+"\""} 
+                      href={"https://www.google.com/maps/place/\""+addressSearch+"\""} 
                       className="btn btn-primary cool-lg-5 mx-1 mb-1">
                       View Google Maps
                     </a>
