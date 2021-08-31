@@ -20,6 +20,7 @@ const Restaurant = props => {
   }, [props.match.params.id]);
   
   const getRestaurant = id => {
+    //Submit request for restaurant info based on ID
     RestaurantDataService.get(id)
       .then(response => {
         setRestaurant(response.data);
@@ -32,23 +33,24 @@ const Restaurant = props => {
 
   const deleteReview = (reviewId, index) => {
     //Submit request to delete review
-    RestaurantDataService.deleteReview(reviewId)
+    RestaurantDataService.deleteReview(reviewId, props.user.id)
       .then(response => {
         setRestaurant((prevState) => {
           //Remove deleted review from state
           prevState.reviews.splice(index, 1);
           return({
             ...prevState
-          })
-        })
+          });
+        });
       })
       .catch(e => {
-
+        console.log(e);
       });
   };
 
   return (
     <div className="restaurant">
+      {/* Ensure restaurant is selected before rendering */}
       {restaurant ? (
         <div>
           <h5>{restaurant.name}</h5>
@@ -66,6 +68,7 @@ const Restaurant = props => {
 
           <h4>Reviews</h4>
           <div className="row">
+            {/* Check if any reviews exist, then map review into cards */}
             {restaurant.reviews.length > 0 ? (
               restaurant.reviews.map((review, index) => {
                 return (
@@ -90,7 +93,7 @@ const Restaurant = props => {
                             </a>
                             <Link 
                               to={{
-                                pathname: "/restaurants" + props.match.params.id + "/review",
+                                pathname: "/restaurants/" + props.match.params.id + "/review",
                                 state: { currentReview: review }
                               }}
                               className="btn btn-primary col-lg-5 mx-1 mb-1"
@@ -101,7 +104,6 @@ const Restaurant = props => {
                         }
                       </div>
                     </div>
-
                   </div>
                 )
               })
