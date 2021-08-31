@@ -102,7 +102,7 @@ const RestaurantsList = props => {
   return (
     <div id="restaurantsList">
       <div className="row pb-1">
-        <div className="input-group col-lg-4">
+        <div className="input-group col-lg-4 mx-2 mb-1">
           <input
             text="text"
             className="form-control"
@@ -121,7 +121,7 @@ const RestaurantsList = props => {
             </button>
           </div>
         </div>
-        <div className="input-group col-lg-4">
+        <div className="input-group col-lg-4 mx-2 mb-1">
           <input
             type="text"
             className="form-control"
@@ -140,7 +140,7 @@ const RestaurantsList = props => {
             </button>
           </div>
         </div>
-        <div className="input-group col-lg-4">
+        <div className="input-group col-lg-4 mx-2 mb-4">
           <select onChange={onChangeSearchCuisine}>
             {cuisines.map(cuisine =>{
               return (
@@ -185,8 +185,9 @@ const RestaurantsList = props => {
                     <a 
                       target="a_blank" 
                       href={"https://www.google.com/maps/place/\""+addressSearch+"\""} 
-                      className="btn btn-primary cool-lg-5 mx-1 mb-1">
-                      View Google Maps
+                      className="btn btn-primary col-lg-5 mx-1 mb-4"
+                    >
+                      View on Google Maps
                     </a>
                   </div>
                 </div>
