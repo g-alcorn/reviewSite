@@ -20,17 +20,16 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App container">
       <header className="App-header">
       </header>
-
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/restaurants" className="navbar-brand">
-          Restaurant Reviews
-        </a>
-        <div className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to={"/restaurants"} className="nav-link">Restaurants</Link>
+      <nav className="navbar navbar-expand navbar-dark bg-dark mb-2">
+        <div className="navbar-nav mr-auto">     
+          <a href="/restaurants" className="navbar-brand">
+            Presto Resto
+          </a>
+          <li className="nav-item navbar-brand">
+            Restaurant Reviews
           </li>
           <li className="nav-item" >
             { user ? (
