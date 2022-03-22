@@ -20,15 +20,15 @@ function App() {
   };
 
   return (
-    <div className="App container">
+    <div className="App">
       <header className="App-header">
       </header>
       <nav className="navbar navbar-expand navbar-dark bg-dark mb-2">
-        <div className="navbar-nav mr-auto">     
+        <div className="navbar-nav">     
           <a href="/restaurants" className="navbar-brand">
             Presto Resto
           </a>
-          <li className="nav-item navbar-brand">
+          <li className="nav-link">
             Restaurant Reviews
           </li>
           <li className="nav-item" >
@@ -43,7 +43,7 @@ function App() {
         </div>
       </nav>
 
-      <div>
+      <div className="container">
         <Switch>
           <Route 
             exact 

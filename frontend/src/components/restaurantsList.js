@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RestaurantDataService from "../services/restaurantService";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 const RestaurantsList = props => {
   //Establish variables to be stored in app state
@@ -17,6 +16,7 @@ const RestaurantsList = props => {
     retrieveCuisines();
   }, []);
 
+  //Save search terms in state
   const onChangeSearchName = input => {
     const searchName = input.target.value;
     setSearchName(searchName);
@@ -32,6 +32,7 @@ const RestaurantsList = props => {
     setSearchZip(searchZip);
   };
 
+  //Call network functionos in DataService
   const retrieveRestaurants = () => {
     RestaurantDataService
       .getAll()
@@ -43,6 +44,7 @@ const RestaurantsList = props => {
       });
   };
 
+  //Retrieve data for dropdown menu
   const retrieveCuisines = () => {
     RestaurantDataService
       .getCuisines()
@@ -58,6 +60,7 @@ const RestaurantsList = props => {
     retrieveRestaurants();
   };
 
+  //Transmit search terms
   const find = (query, by) => {
     RestaurantDataService
       .find(query, by)
@@ -85,6 +88,7 @@ const RestaurantsList = props => {
     find(searchZip, "zipcode");
   };
 
+  //Allows enter key to trigger search
   const handleEnterPress = (event) => {
     if(event.key === "Enter") {
       switch(event.nativeEvent.target.attributes[2].nodeValue) {
