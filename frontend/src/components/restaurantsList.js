@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RestaurantDataService from "../services/restaurantService";
 import { Link } from "react-router-dom";
+import styles from '../App.css';
 
 const RestaurantsList = props => {
   //Establish variables to be stored in app state
@@ -105,67 +106,67 @@ const RestaurantsList = props => {
 
   return (
     <div id="restaurantsList">
-      <div className="row pb-1">
-        <div className="input-group col mb-1">
-          <input
-            text="text"
-            className="form-control"
-            placeholder="Search by name"
-            value={searchName}
-            onChange={onChangeSearchName}
-            onKeyPress={handleEnterPress}
-          />
-          <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByName}
-            >
-              Search
-            </button>
-          </div>
-        </div>
-        <div className="input-group col mb-1">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by ZIP"
-            value={searchZip}
-            onChange={onChangeSearchZip}
-            onKeyPress={handleEnterPress}
-          />
-          <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByZip}
-            >
-              Search
-            </button>
-          </div>
-        </div>
-        <div className="input-group col mb-4">
-          <select onChange={onChangeSearchCuisine}>
-            {cuisines.map(cuisine =>{
-              return (
-                <option value={cuisine}>
-                  {cuisine.substr(0,20)}
-                </option>
-              );
-            })}
-          </select>
-          <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByCuisine}
-            >
-             Search 
-            </button>
-          </div>
-        </div>
+      {}
+      <div className="searchbar row pb-1">
+    <div className="input-group col mb-1">
+      <input
+        text="text"
+        className="form-control"
+        placeholder="Search by name"
+        value={searchName}
+        onChange={onChangeSearchName}
+        onKeyPress={handleEnterPress}
+      />
+      <div className="input-group-append">
+        <button
+          className="btn btn-outline-secondary"
+          type="button"
+          onClick={findByName}
+        >
+          Search
+        </button>
       </div>
-
+    </div>
+    <div className="input-group col mb-1">
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Search by ZIP"
+        value={searchZip}
+        onChange={onChangeSearchZip}
+        onKeyPress={handleEnterPress}
+      />
+      <div className="input-group-append">
+        <button
+          className="btn btn-outline-secondary"
+          type="button"
+          onClick={findByZip}
+        >
+          Search
+        </button>
+      </div>
+    </div>
+    <div className="input-group col mb-1">
+      <select onChange={onChangeSearchCuisine}>
+        {cuisines.map(cuisine =>{
+          return (
+            <option value={cuisine}>
+              {cuisine.substr(0,20)}
+            </option>
+          );
+        })}
+      </select>
+      <div className="input-group-append">
+        <button
+          className="btn btn-outline-secondary"
+          type="button"
+          onClick={findByCuisine}
+        >
+        Search 
+        </button>
+      </div>
+    </div>
+  </div>
       <div className="row">
         {restaurants.map((restaurant) => {
           const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;

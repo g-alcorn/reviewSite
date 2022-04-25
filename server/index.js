@@ -20,13 +20,12 @@ async function run() {
       console.log('error!\n' + e);
     })
     .then(async client => {
-      console.log('Successfully connected!');
       //Initial reference to restaurants DB
       await RestaurantsDAO.injectDB(client);
       await ReviewsDAO.injectDB(client);
       //Init server  
       app.listen(port, () => {
-        console.log(`Listening on Port ${port}`);
+        console.log(`Connected to MongoDB Atlas. Server is listening on Port ${port} :-)`);
       });
     });
     //Verify connection
@@ -36,7 +35,6 @@ async function run() {
   }
 }
 
-console.log('attempting connection')
 run().catch(console.dir);
 
 

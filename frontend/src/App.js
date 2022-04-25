@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AddReview from "./components/addReview";
 import Restaurant from "./components/restaurant";
 import RestaurantsList from "./components/restaurantsList";
+//import RestaurantsSearch from "./components/restaurantSearch";
 import Login from "./components/login";
 
 function App() {
@@ -21,8 +22,6 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
       <nav className="navbar navbar-expand navbar-dark bg-dark mb-2">
         <div className="navbar-nav">     
           <a href="/restaurants" className="navbar-brand">
@@ -49,7 +48,8 @@ function App() {
             exact 
             path={["/", "/restaurants"]} 
             component={RestaurantsList} 
-          />
+          >
+          </Route>
 
           <Route
             path="/restaurants/:id/review"
