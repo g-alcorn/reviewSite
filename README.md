@@ -8,7 +8,7 @@ This is a full-stack app using the MERN stack - MongoDB Atlas, Express, React, a
 - Then, run npm start inside both the /frontend/ and /server/ directories
 
 ## Demonstration
-<iframe width="560" height="315" src="https://www.youtube.com/embed/icLWPfB-Mrg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[Presto Resto Demo video](https://youtu.be/icLWPfB-Mrg)
 This YouTube video shows the basic functionality of the site.
 
 Upon loading, the homepage shows a selection of restaurants. The user can open the reviews for each restaurant, or open the link to Google Maps.
